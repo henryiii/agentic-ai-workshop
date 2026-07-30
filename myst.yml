@@ -1,0 +1,22 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  title: Agentic AI Workshop
+  description: A workshop that introduces agentic AI tools and workflows
+  keywords: [AI, agents, LLM, workflows]
+  authors: [Henry Schreiner]
+  github: https://github.com/henryiii/agentic-ai-workshop
+  jupyter: false
+  toc:
+    - file: README.md
+    - title: Introduction
+      children:
+        - file: content/intro/01_setup.md
+
+site:
+  template: book-theme
+  options:
+    logo_text: Agentic AI Workshop
+    # Vendored so the build never fetches mystmd.org's default favicon, which
+    # fails intermittently in CI (ERR_STREAM_PREMATURE_CLOSE).
+    favicon: favicon.ico
