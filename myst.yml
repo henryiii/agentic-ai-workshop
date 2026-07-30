@@ -9,9 +9,19 @@ project:
   jupyter: false
   toc:
     - file: README.md
-    - title: Introduction
-      children:
-        - file: content/intro/01_setup.md
+    - file: content/00_setup.md
+    - file: content/01_intro.md
+    - file: content/02_agents_md.md
+    - file: content/03_inspection.md
+    - file: content/04_reviewing.md
+    - file: content/05_issue_triage.md
+    - file: content/06_ci_and_bugfixes.md
+    - file: content/07_common_tasks.md
+    - file: content/08_repetitive_work.md
+    - file: content/09_writing_tests.md
+    - file: content/10_profiling.md
+    - file: content/11_new_features.md
+    - file: content/12_refactors.md
 
 site:
   template: book-theme
