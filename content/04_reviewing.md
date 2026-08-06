@@ -7,7 +7,6 @@ non-confidential documents into a chatbot and ask for a review; your agent can
 do a lot more too. You can also use local models for help (a little) with
 private material.
 
-
 ## Reviewing text
 
 You can ask for reviews of documentation, plans, and just about any text in a repository.
@@ -67,7 +66,7 @@ They report back, and any findings that check out as correct are applied.
 
 AI review is a powerful tool for AI-generated code. To be most effective, you
 should have two models of similar level from different model families. By using
-one as the implementor, and the other as the reviewer, you can get better
+one as the implementer, and the other as the reviewer, you can get better
 results than a single model alone, much of the way to the next model class
 above. This is called Rubber Duck, and it is built into GitHub Copilot CLI;
 GitHub reports that Claude Sonnet 4.6 reviewed by GPT-5.4 closed 74.7% of the
