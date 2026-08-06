@@ -42,3 +42,5 @@ What an agent is, how it differs from a chat model, and what it can do in a repo
   - The golden rule (LLVM/curl): a contribution should be worth more than the time it takes to review
   - Do not use AI on "good first issues" — they exist to teach humans
   - Review time is the new bottleneck; human review time is the most valuable resource
+
+Link: <https://platform.openai.com/tokenizer>

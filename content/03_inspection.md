@@ -2,25 +2,51 @@
 
 How to use an agent to explore and explain an unfamiliar codebase.
 
-## Outline
+## Ask questions
 
-- The best first task: ask questions about a codebase, no write access needed
-  - "How do I run the tests?" — "Who wrote the majority of the CI?"
-  - Where is X defined (works even across languages, e.g. C in CPython)?
-  - Can this return value be `None`? The agent traces the logic and shows why
-  - Does this code handle this edge case (e.g. multi-digit version numbers)?
-  - "Write an `ARCHITECTURE.md` describing how this project works"
-  - The agent looks up git history, webpages, and more on its own — no need to spell it out
-- Watch it work: enable thinking display — it greps, reads, and searches the way you would
-- Beyond code
-  - Look over failing logs; compare two archives that should be identical
-  - Explain confusing code (even your own old code) before you edit it
-- From inspection to small edits
-  - Once it can find where and what to edit, small changes are fast — fire and do something else
-- Contributing to an unfamiliar project
-  - The agent learns their conventions, gets tests and linters running
-  - Run `/init` if the project has no `AGENTS.md`
-  - Etiquette: human-written PR description, mention AI use, respect `AI_POLICY.md`,
-    do not open PRs a maintainer could trivially do themselves
-- Exercise: explore `agentic-ai-example` — answer three questions about it,
-  then have the agent write an `ARCHITECTURE.md`
+You can ask questions of a codebase in the harness. Some examples:
+
+> How do I run the tests?
+
+This will find the documentation for it, look at CI setup, and general setup to
+find the expected way for a contributor to run the tests.
+
+> Where is X defined?
+
+This even works across languages; try it in CPython for something defined in C!
+
+> Can this return value be `None`?
+
+This will trace through the logic. It's also possible it will set up and run code to check.
+
+> Who wrote this function?
+
+You can refer to anything in the context, like a chatbot. And it can check git history and trace through to find answers.
+
+> Write an `ARCHITECTURE.md` describing how this project works
+
+You can ask it to record artifacts instead of just answering.
+
+:::{tip}
+Harnesses have a way to copy the last response in markdown. Usually `/copy` or a similar shortcut.
+:::
+
+## Watch it work
+
+Most harnesses let you see the thinking phase. Open models show the raw text;
+commercial models usually show a summary, and some redact it. Either way, you
+can still see the operations it performs. It will grep, read, and search around
+much like you would when looking for answers.
+
+## Beyond code
+
+You can ask about anything, not just code. For example, you can ask about the
+difference between a passing log and a failing one. You can ask about the
+difference between two archives. You can tell it to load a webpage and summarize
+it, or if your code fulfils the description on the page.
+
+## Exercise
+
+:::{exercise}
+Investigate `agentic-ai-example`, how does it work?
+:::
