@@ -47,6 +47,10 @@ Another thing you can try is an adversarial review. Try something like this:
 > see any problems? Anything that could be done or written more cleanly? Can
 > you break it?
 
+This is a real prompt too; it was used (more than once) while developing
+[nox#1131](https://github.com/wntrblm/nox/pull/1131), parallel session
+support.
+
 ### Simplifying review
 
 Claude Code has this as `/simplify`, but you can prompt it yourself. The key
