@@ -32,6 +32,8 @@ It is a good habit to separate planning from implementation. Most harnesses have
 
   Posting the plan as a comment on the issue or pull request gives your collaborators a chance to object early, and gives a future agent (or a future you) the context behind the change. It also makes the eventual review much easier, since the reviewer can check the code against a stated intent instead of guessing at one.
 
+  A real example: [scikit-build-core#1324](https://github.com/scikit-build/scikit-build-core/issues/1324) is a plan for speeding up the test suite, built in plan mode and posted as an issue, with the decisions made during planning recorded in it. The PR that closed it ([#1325](https://github.com/scikit-build/scikit-build-core/pull/1325)) could then be reviewed against the stated plan; the profiling side of that change appears in [](10_profiling.md).
+
 ## Implementing from a specification
 
 Agents are very good at working from a written specification. If the feature is already described somewhere (e.g. a PEP, an issue with a detailed proposal, an RFC, a design document), you can point the agent directly at it, add whatever extra details are specific to your codebase, and let it work. The specification does the same job that a test does in test-driven development (see [Writing tests](./09_writing_tests.md)): it constrains the agent to a behavior you have already agreed on, rather than one it invented.
