@@ -7,6 +7,8 @@ project:
   authors: [Henry Schreiner]
   github: https://github.com/henryiii/agentic-ai-workshop
   jupyter: false
+  exclude:
+    - slides
   toc:
     - file: README.md
     - file: content/00_setup.md
@@ -22,6 +24,8 @@ project:
     - file: content/10_profiling.md
     - file: content/11_new_features.md
     - file: content/12_refactors.md
+    - title: Slides
+      url: /slides/intro.html
 
 site:
   template: book-theme
