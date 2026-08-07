@@ -25,7 +25,9 @@ project:
     - file: content/11_new_features.md
     - file: content/12_refactors.md
     - title: Slides
-      url: /slides/intro.html
+      # MyST writes toc urls verbatim, so a root-relative path drops the
+      # GitHub Pages base path and 404s. Use the full URL.
+      url: https://henryiii.github.io/agentic-ai-workshop/slides/intro.html
 
 site:
   template: book-theme
