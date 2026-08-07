@@ -1,27 +1,61 @@
 # New features
 
-How to plan and build a new feature with an agent.
+While building a new feature, agentic AI can also save you time by generating the code you want to write. However, you should keep in mind that some of the time you save will be spent on carefully constructing your prompt, reviewing the work, and possibly iterating on it if you are not happy with the result. It is also the place where AI is most likely to go astray, since there are no tests to constrain the new code and the guidelines are only as good as your prompt. Still, there are some practices that can make the process more efficient and less error-prone.
 
-## Outline
+## Plan first
 
-- Plan first
-  - Use plan mode to discuss the change; a good agent finds weak points and asks questions
-  - Most harnesses generate a plan file you can edit before it starts
-  - Mix tiers: a smart model makes the plan, a cheaper model implements it
-  - Save the plan as a comment on the issue or PR
-- Implementing from a specification
-  - Point it at the spec (a PEP, an issue, a design document), add your extra details, let it go
-  - Real examples: PEP implementations, build-backend plugin features
-- Prototype to decide
-  - Test-drive a feature before committing to it: does it work, is it fast enough, do you like it?
-  - Keep the AI version, polish it, or rewrite it yourself — the prototype answered the question either way
-- Model choice: use a good model here — you want the highest chance of usable code
-- Validate beyond your own repo
-  - Adapt downstream projects to the new feature and collect their pain points
-  - Have the AI try to break the feature; have it follow your tutorial and report gaps
-- The real cost is after generation
-  - Working through and understanding the changes is the time sink; it can overwhelm you with code to review
-  - Iterate — do not try to one-shot it; talk to the agent while it works
-    (you do not need to hand-edit, but do iterate until it meets your standards)
-- Exercise: take a small written spec, plan in plan mode, implement it in `agentic-ai-example`,
-  and review the result
+It is a good habit to separate planning from implementation. Most harnesses have a plan mode, where the agent explores the codebase and proposes an approach without editing anything (editing and most other tools are disabled in this mode). A good agent will find weak or vague points in your idea, point out parts of the codebase that will require extra attention, and ask you questions that you might not have thought about yet. Answering those questions before any code exists is far better than discovering the same problems in review.
+
+- **Edit the plan before it starts.**
+
+  Most harnesses generate a plan file that you can read and modify. Treat it as the specification for the work. Removing a step you disagree with, or adding a constraint the agent missed, takes a minute and can save you an entire wasted implementation. It is also useful to write the plan in the form of a checklist, so you can tick off each step as it is completed, and be able to resume in another session without the agent having to figure out what has already been done.
+
+- **Mix model tiers.**
+
+  Planning is where judgment matters the most, and implementation is often mechanical once the plan is good. A common and cost-effective pattern is to have a strong model produce the plan, then hand it to a cheaper "workhorse" model to carry it out. This works precisely because the plan pins down the decisions that a weaker model might get wrong.
+
+- **Save the plan where the work lives.**
+
+  Posting the plan as a comment on the issue or pull request gives your collaborators a chance to object early, and gives a future agent (or a future you) the context behind the change. It also makes the eventual review much easier, since the reviewer can check the code against a stated intent instead of guessing at one.
+
+## Implementing from a specification
+
+Agents are very good at working from a written specification. If the feature is already described somewhere (e.g. a PEP, an issue with a detailed proposal, an RFC, a design document), you can point the agent directly at it, add whatever extra details are specific to your codebase, and let it work. The specification does the same job that a test does in test-driven development (see [Writing tests](./09_writing_tests.md)): it constrains the agent to a behavior you have already agreed on, rather than one it invented.
+
+This works well in practice for things like implementing a new PEP in a library, or adding a feature to a build-backend plugin where the interface is already documented. The more precise the source material, the less supervision the implementation needs.
+
+## Prototype to decide
+
+Not every feature is worth building, and it is often hard to tell in advance. Agentic AI makes it cheap enough to build a rough version and find out. Does the approach actually work? Is it fast enough (see [Profiling](./10_profiling.md))? Once you can hold it, do you even like the design?
+
+The important part is that the prototype has done its job regardless of what happens to the code. You might keep the AI version, polish it into something you are happy to maintain, or throw it away and write it yourself now that you know what you want. All three are good outcomes, and none of them require you to have committed to the feature before you had evidence.
+
+:::{note} Model choice matters when building features
+This is the place to use the best model you have available. You are asking for novel code rather than a mechanical transformation, so you want the highest chance that what comes back is usable. A weak model here does not just produce worse code — it produces code that looks plausible and costs you far more time in review than it saved in writing.
+:::
+
+## Validate beyond your own repo
+
+Your own test suite tells you the feature runs. It does not tell you whether the feature is any good. A few ways to get that signal cheaply:
+
+- **Adapt a downstream project to use the new feature.**
+
+  Have the agent take a real project that would benefit from the feature and convert it, then report the pain points. This surfaces interface problems that are invisible from inside your own codebase.
+
+- **Have the agent try to break it.**
+
+  Ask for edge cases, invalid inputs, and unusual combinations of options. Agents are good at this, and anything it finds is worth an issue reproducer in the test suite.
+
+- **Have it follow your own documentation.**
+
+  Point the agent at the tutorial or README you just wrote and have it work through the steps as a new user would, reporting anything that is missing, wrong, or confusing. Documentation gaps are easy to miss when you already know how the feature works.
+
+## The real cost is after generation
+
+It is tempting to measure the value of an agent by how quickly it produces a working feature, but generation was never the bottleneck. The time sink is working through the changes and genuinely understanding them, and an agent can produce far more code than you can carefully review in the same amount of time. Being handed a large, plausible-looking diff is not obviously better than being handed nothing.
+
+The practical way to keep this under control is to iterate instead of trying to one-shot the feature. Talk to the agent while it works: redirect it when it heads somewhere you did not intend, ask it to explain a decision you do not follow, and have it fix the parts you are unhappy with. You do not need to hand-edit the code yourself, but you do need to keep iterating until it meets the standards you would apply to your own work. Reviewing in small pieces as they arrive is much easier than reviewing everything at the end (see [Reviewing](./04_reviewing.md)).
+
+## Exercise
+
+Take a small written spec, plan it out in plan mode, implement it in `agentic-ai-example`, and review the result.
