@@ -9,7 +9,7 @@ It is a good habit to separate planning from implementation. Most harnesses have
 > I'd like to support optional pre-compilation to speed up usage (header only
 > libraries are slow). This is similar to how nanobind works (though I believe
 > it's not optional there), and there was an attempt here:
-> https://github.com/pybind/pybind11/pull/2445 tried to start this. It should
+> <https://github.com/pybind/pybind11/pull/2445> tried to start this. It should
 > be easy to use from cmake (maybe meson too, if possible), and have a pretty
 > simple user-facing mechanism for users not using a supported build system.
 

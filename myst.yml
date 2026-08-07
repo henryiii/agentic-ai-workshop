@@ -4,13 +4,19 @@ project:
   title: Agentic AI Workshop
   description: A workshop that introduces agentic AI tools and workflows
   keywords: [AI, agents, LLM, workflows]
-  authors: [Henry Schreiner]
+  authors:
+    - Henry Schreiner
+    - Andres Rios-Tascon
   github: https://github.com/henryiii/agentic-ai-workshop
   jupyter: false
   exclude:
     - slides
   toc:
     - file: README.md
+    - title: Slides
+      # MyST writes toc urls verbatim, so a root-relative path drops the
+      # GitHub Pages base path and 404s. Use the full URL.
+      url: https://henryiii.github.io/agentic-ai-workshop/slides/intro.html
     - file: content/00_setup.md
     - file: content/01_intro.md
     - file: content/02_agents_md.md
@@ -24,10 +30,6 @@ project:
     - file: content/10_profiling.md
     - file: content/11_new_features.md
     - file: content/12_refactors.md
-    - title: Slides
-      # MyST writes toc urls verbatim, so a root-relative path drops the
-      # GitHub Pages base path and 404s. Use the full URL.
-      url: https://henryiii.github.io/agentic-ai-workshop/slides/intro.html
 
 site:
   template: book-theme

@@ -182,7 +182,7 @@ when generating commands, text, code, etc.
 
 The other side is also a problem; once the context window starts getting too
 full, the LLM will start getting forgetful and the impact of the context will
-decrease.  The advertised limit of models is too large; if you have a 1M token
+decrease. The advertised limit of models is too large; if you have a 1M token
 context window, you should probably not usually let it get over 300K-400K
 unless you are in the middle of an active task.
 
@@ -190,7 +190,6 @@ You can run `/compact` to compact the context. This is safe to do most of the
 time; lots of the context is filled with details you don't need in the next
 step. It's good practice to do this whenever returning to a previous conversation,
 and when there's a clear break in what you are doing.
-
 
 ## Working norms and disclosure
 
@@ -206,7 +205,7 @@ to always add this marker, and they do.
 
 Credit AI in commits with the Linux kernel trailer `Assisted-by:
 <harness>:<model>`; never `Co-authored-by` or especially `Signed-off-by` (DCO
-is a human legal act).  Your model is not a co-author, that's a human thing;
+is a human legal act). Your model is not a co-author, that's a human thing;
 it's an assistant. Some projects prefer no disclosure at all in the commits and
 only in the PR description (Kubernetes, for example), so it cannot be traced
 back to an AI company at all, but most are happy with the Linux kernel trailer.
@@ -226,4 +225,3 @@ can read it, review time is the new bottleneck; human review time is the most
 valuable resource. Never use AI on "good first issues", those are simple
 issues meant to help onboard new contributors (and due to AI, are rapidly being phased
 out in many projects).
-
